@@ -101,5 +101,15 @@
       "id": 3
     }
   ],
-  "loggedInUser": []
+  "loggedInUser": [
+    {
+      "fullName": "Laura Mucaraku",
+      "mobileNo": "0696291432",
+      "email": "lauram@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [],
+      "id": 3
+    }
+  ]
 }
