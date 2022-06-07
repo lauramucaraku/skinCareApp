@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="header">
+    <h2>Log In</h2>
+  </div>
+  <form class="example-form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input formControlName="email" matInput placeholder="xx@gmail.com" required type="email" id="email">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput [type]="hide ? 'password' : 'text'"
+             placeholder="Password should contain at least 7 chars"required minlength="7" id="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-raised-button class="button-class btn-danger" routerLink="/products">Log In</button>
+    <p class="not-member">Not a member?</p>
+    <p class="anchor-link" routerLink="/signup">Register here</p>
+  </form>
+</div>
