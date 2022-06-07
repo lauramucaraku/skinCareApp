@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let product of productsList">
+      <div class="card col-md-3">
+        <img src="{{product.imgUrl}}" alt="">
+        <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><b>{{product.title}}</b></h4>
+        <p><b>Price: {{product.price | currency}}</b></p>
+        <p>{{product.description}}</p>
+      </div>
+    </ng-container>
+  </div>
+</div>
