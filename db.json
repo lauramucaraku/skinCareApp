@@ -1,0 +1,104 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Rilastil Cleanser",
+      "price": 23,
+      "description": "Rilastil Aqua Face Cleanser delicately removes skin impurities. Suitable for any kind of skin",
+      "category": "Cleanser",
+      "imgUrl": "https://static.beautytocare.com/media/catalog/product/cache/global/image/650x650/85e4522595efc69f496374d01ef2bf13/r/i/rilastil-xerolact-cleansing-gel-delicate-and-protective-750ml_1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Garnier Cleansing Water",
+      "price": 15,
+      "description": "Cleanses + removes makeup + refreshes. No rinse, no harsh rubbing. For face, lips, and eyes.",
+      "category": "Cleanser",
+      "imgUrl": "https://d1ixo36kppfedg.cloudfront.net/faceview/ii/ag/ie/b7a/imgs/pd/1600668105772_MRemover93.jpg"
+    },
+    {
+      "id": 3,
+      "title": "CeraVe Moisturizing Cream",
+      "price": 20,
+      "description": "Includes 3 essential ceramides that work together to lock in skin's moisture and restore your skin’s protective barrier.",
+      "category": "Moisturizer",
+      "imgUrl": "https://i.ebayimg.com/thumbs/images/g/F2AAAOSwDrZhRt01/s-l225.jpg"
+    },
+    {
+      "id": 4,
+      "title": "CeraVe Cleanser",
+      "price": 19,
+      "description": "CeraVe Cleanser cleanses and refreshes the skin without over-stripping it or leaving it feeling tight and dry.",
+      "category": "Cleanser",
+      "imgUrl": "https://m.media-amazon.com/images/I/51DbQev1thL._AC_SS450_.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Bondi Sands SPF 50+",
+      "price": 15,
+      "description": " Providing UVA and UVB protection, our water resistant formula is gentle, fast absorbing and dries to an invisible finish.",
+      "category": "SPF",
+      "imgUrl": "https://cdn.shopify.com/s/files/1/0468/4739/3952/products/Image-6_866x.jpg?v=1616454227"
+    },
+    {
+      "id": 6,
+      "title": "Uriage Hyseac SPF 50+",
+      "price": 25,
+      "description": "The cream provides very high sun protection against UVA and UVB rays, and prevents skin from drying out.",
+      "category": "SPF",
+      "imgUrl": "https://www.oleapharma.com/Face-sun-care/HYSEAC-SOLAR-FLUID-SPF-50-very-high-protection-ml-tube-08E39C8C8.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Avene SPF 50+",
+      "price": 21,
+      "description": "Light and non greasy texture: invisible, non-oily texture. Specially formulated for dry skin",
+      "category": "SPF",
+      "imgUrl": "https://d3r2zleywq7959.cloudfront.net/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/9/29548_xlarge_3.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Neutrogena Moisturizer",
+      "price": 23,
+      "description": "Formula with Hyaluronic Acid absorbs quickly like a gel but has the lasting, intense moisturizing power of a cream.",
+      "category": "Moisturizer",
+      "imgUrl": "https://media.allure.com/photos/61e73bdcfd505011ae4dd76c/1:1/w_2000,h_2000,c_limit/Neutrogena%20Hydro%20Boost%20Gel-Cream%20Extra%20Dry.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Uriage Hyseac Moisturizer",
+      "price": 25,
+      "description": "The Water Cream deliciously melts into the skin and infuses it with its unique moisturizing complex.",
+      "category": "Moisturizer",
+      "imgUrl": "https://cdn.notinoimg.com/banner6/uriage/3661434004339_01-o/uriage-hyseac-hydra-restructuring-skincare-regenerating-and-moisturizing-cream-for-skin-left-dry-and-irritated-by-medicinal-acne-treatment___12.jpg"
+    }
+  ],
+  "users": [
+    {
+      "fullName": "",
+      "mobileNo": "",
+      "email": "user@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [],
+      "id": 1
+    },
+    {
+      "fullName": "",
+      "mobileNo": "",
+      "email": "admin@gmail.com",
+      "password": "1234567",
+      "role": "admin",
+      "id": 2
+    },
+    {
+      "fullName": "Laura Mucaraku",
+      "mobileNo": "0696291432",
+      "email": "lauram@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [],
+      "id": 3
+    }
+  ]
+}

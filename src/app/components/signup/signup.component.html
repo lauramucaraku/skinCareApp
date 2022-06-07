@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="header">
+    <h2>Sign Up</h2>
+  </div>
+  <form class="example-form" [formGroup]="signupForm" (ngSubmit)="register()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Full Name</mat-label>
+      <input matInput required type="text" name="fullName" formControlName="fullName">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Mobile No.</mat-label>
+      <input matInput required type="text" formControlName="mobileNo">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input matInput placeholder="xx@gmail.com" required type="email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'"
+             placeholder="Password should contain at least 7 chars"required minlength="7" id="password"
+             formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-raised-button class="button-class btn-danger" type="submit">Sign Up</button>
+  </form>
+</div>
