@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginService} from "../../services/login.service";
 import {LogedInService} from "../../services/loged-in.service";
 
 @Component({
@@ -11,12 +10,23 @@ export class NavbarComponent implements OnInit {
 
   userLoggedIn?: any;
 
-  constructor(private logedInService: LogedInService) { }
+  constructor(private logedInService: LogedInService) {
+  }
 
   ngOnInit(): void {
     this.logedInService.getLoggedIn().subscribe(val=>{
       this.userLoggedIn = val;
     })
+  }
+
+  addNewProduct() {
+    console.log(this.userLoggedIn);
+  }
+
+  logout(user: any) {
+    if(confirm('Admin, are you sure you want to logout?')) {
+      this.logedInService.logoutUser(user).subscribe();
+    }
   }
 
 }

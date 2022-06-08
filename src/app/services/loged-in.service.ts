@@ -18,4 +18,9 @@ export class LogedInService {
     return this.httpClient.get(this.url);
   }
 
+  logoutUser(user: any): Observable<any> {
+    return this.httpClient.delete(this.url+'/'+user.id);
+
+  }
+
 }
