@@ -99,6 +99,15 @@
       "role": "user",
       "productIds": [],
       "id": 3
+    },
+    {
+      "fullName": "L M ",
+      "mobileNo": "2222222",
+      "email": "lm1@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [],
+      "id": 4
     }
   ],
   "loggedInUser": []

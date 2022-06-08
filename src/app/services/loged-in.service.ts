@@ -20,7 +20,6 @@ export class LogedInService {
 
   logoutUser(user: any): Observable<any> {
     return this.httpClient.delete(this.url+'/'+user.id);
-
   }
 
 }

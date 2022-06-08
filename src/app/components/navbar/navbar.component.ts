@@ -24,9 +24,16 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(user: any) {
-    if(confirm('Admin, are you sure you want to logout?')) {
-      this.logedInService.logoutUser(user).subscribe();
+    if(user.role=='admin') {
+      if(confirm('Admin, are you sure you want to logout?')) {
+        this.logedInService.logoutUser(user).subscribe();
+      }
+    } else if (user.role=='user') {
+      if(confirm('User, are you sure you want to logout?')) {
+        this.logedInService.logoutUser(user).subscribe();
+      }
     }
+
   }
 
 }

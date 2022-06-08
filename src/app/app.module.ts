@@ -18,6 +18,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     SignupComponent,
     LoginComponent,
     NavbarComponent,
-    MainPageComponent
+    MainPageComponent,
+    AdminComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

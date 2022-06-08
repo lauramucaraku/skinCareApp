@@ -11,27 +11,29 @@
     </div>
   </header>
 </ng-container>
-<!--<ng-container *ngIf="userLoggedIn.length!=0 && adminLoggedIn.length==0">-->
-<!--  <header>-->
-<!--    <div class="navbar navbar-dark bg-danger shadow-sm">-->
-<!--      <div class="navbar-brand align-items-center d-flex">-->
-<!--        <span style="font-size: 40px;" class="material-icons">face_3</span>&ngsp;-->
-<!--        <strong style="font-size: 20px;" routerLink="/products">SkinCare Shop</strong>-->
-<!--        <div class="form-group">-->
-<!--          <input type="text" class="form-control" placeholder="Search product by category">-->
-<!--        </div>-->
-<!--        <span class="fas fa-search search-icon"></span>-->
-<!--      </div>-->
-<!--      <button class="btn btn-danger" routerLink="main" (click)="logout(userLoggedIn[0])">-->
-<!--        Log out-->
-<!--      </button>-->
-<!--      <button class="btn btn-danger" routerLink="cart">-->
-<!--        <mat-icon>shopping_cart</mat-icon>-->
+
+<ng-container *ngIf="userLoggedIn.length!=0 && userLoggedIn[0].role==='user'">
+  <header>
+    <div class="navbar navbar-dark bg-danger shadow-sm">
+      <div class="navbar-brand align-items-center d-flex">
+        <span style="font-size: 40px;" class="material-icons">face_3</span>&ngsp;
+        <strong style="font-size: 20px;" routerLink="/products">SkinCare Shop</strong>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search product by category">
+        </div>
+        <span class="fas fa-search search-icon"></span>
+      </div>
+      <button class="btn btn-danger" routerLink="main" (click)="logout(userLoggedIn[0])">
+        Log out
+      </button>
+      <button class="btn btn-danger" routerLink="cart">
+        <mat-icon>shopping_cart</mat-icon>
 <!--        <div class="badge bg-gray" style="font-size: 15px;">{{nrOfItems}}</div>-->
-<!--      </button>-->
-<!--    </div>-->
-<!--  </header>-->
-<!--</ng-container>-->
+      </button>
+    </div>
+  </header>
+</ng-container>
+
 <ng-container *ngIf="userLoggedIn.length!=0 && userLoggedIn[0].role==='admin' ">
     <header>
       <div class="navbar navbar-dark bg-danger shadow-sm">
