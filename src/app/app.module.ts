@@ -20,6 +20,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProductsComponent } from './components/products/products.component';
+import { PopupComponent } from './components/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductsComponent } from './components/products/products.component';
     NavbarComponent,
     MainPageComponent,
     AdminComponent,
-    ProductsComponent
+    ProductsComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

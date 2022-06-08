@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LogedInService} from "../../services/loged-in.service";
+import {MatDialog} from "@angular/material/dialog";
+import {PopupComponent} from "../popup/popup.component";
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
   userLoggedIn?: any;
 
-  constructor(private logedInService: LogedInService) {
+  constructor(private logedInService: LogedInService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -20,7 +22,7 @@ export class NavbarComponent implements OnInit {
   }
 
   addNewProduct() {
-    console.log(this.userLoggedIn);
+    this.dialog.open(PopupComponent);
   }
 
   logout(user: any) {

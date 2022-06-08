@@ -22,7 +22,9 @@ export class AdminComponent implements OnInit {
   }
 
   delete(product: ProductModel) {
-
+    if(confirm('Are you sure you want to delete this product?')) {
+      this.productsService.delete(product).subscribe();
+    }
   }
 
 }

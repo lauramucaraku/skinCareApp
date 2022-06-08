@@ -1,0 +1,44 @@
+<h2 style="margin-left: 160px;">Add a new product</h2>
+<form class="example-form" #productForm="ngForm" (ngSubmit)="addProduct(productForm?.form)">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput placeholder="Product title" type="text" id="productTitle" name="title" ngModel>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Price</mat-label>
+    <input matInput ngModel
+           placeholder="Product price"
+           name="price"
+           type="number"
+           id="productPrice"
+           required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput ngModel
+              placeholder="Product description"
+              type="text"
+              id="productDescription"
+              name="description"
+              required>
+    </textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select name="category" id="productCategory" ngModel>
+      <mat-option value="SPF">SPF</mat-option>
+      <mat-option value="Cleanser">Cleanser</mat-option>
+      <mat-option value="Moisturizer">Moisturizer</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Image</mat-label>
+    <input matInput ngModel
+           placeholder="Product image source"
+           type="text"
+           id="productImg"
+           name="imgUrl"
+           required>
+  </mat-form-field>
+  <button mat-raised-button type="submit" class="button-class btn-danger">Add product</button>
+</form>

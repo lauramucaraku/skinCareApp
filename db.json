@@ -110,5 +110,14 @@
       "id": 4
     }
   ],
-  "loggedInUser": []
+  "loggedInUser": [
+    {
+      "fullName": "",
+      "mobileNo": "",
+      "email": "admin@gmail.com",
+      "password": "1234567",
+      "role": "admin",
+      "id": 2
+    }
+  ]
 }

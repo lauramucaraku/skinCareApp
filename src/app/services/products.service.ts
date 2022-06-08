@@ -20,4 +20,13 @@ export class ProductsService {
       .get<ProductModel[]>(this.url);
   }
 
+  addProduct(product: ProductModel): Observable<any> {
+    return this.httpClient.post(this.url, product);
+  }
+
+  delete(product: any) {
+    let productUrl = this.url+'/'+product.id;
+    return this.httpClient.delete(productUrl);
+  }
+
 }
