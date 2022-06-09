@@ -4,6 +4,7 @@ import {LogedInService} from "./loged-in.service";
 import {SignupService} from "./signup.service";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,20 @@ export class CartService {
       this.logedInUser.productIds.splice(this.logedInUser.productIds.find((val: any)=>{
          val.id != product.id;
       }), 1);
+
+      this.httpClient.patch(environment.baseUrl+'/loggedInUser/1',
+        {"productIds": this.logedInUser.productIds}).subscribe();
+
+      this.httpClient.patch(this.url+'/'+this.logedInUser.id,
+        {"productIds": this.logedInUser.productIds}).subscribe();
+    });
+  }
+
+  deleteProducts() {
+    this.logedInService.getLoggedIn().subscribe(user=>{
+      this.logedInUser = user[0];
+
+      this.logedInUser.productIds = [];
 
       this.httpClient.patch(environment.baseUrl+'/loggedInUser/1',
         {"productIds": this.logedInUser.productIds}).subscribe();

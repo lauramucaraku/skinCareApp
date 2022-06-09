@@ -39,10 +39,10 @@ export class CartComponent implements OnInit {
   deleteProduct(product: ProductModel) {
     console.log('The product to be deleted is: ', product);
     this.cartService.deleteProduct(product);
-
   }
 
   deleteProducts() {
+    this.cartService.deleteProducts();
   }
 
   calculateTotalAmount() {

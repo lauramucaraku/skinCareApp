@@ -80,9 +80,7 @@
       "email": "user@gmail.com",
       "password": "1234567",
       "role": "user",
-      "productIds": [
-        4
-      ],
+      "productIds": [],
       "id": 1
     },
     {
@@ -130,9 +128,7 @@
       "email": "user@gmail.com",
       "password": "1234567",
       "role": "user",
-      "productIds": [
-        4
-      ],
+      "productIds": [],
       "id": 1
     }
   ]
