@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductModel} from "../../models/product.model";
 import {LogedInService} from "../../services/loged-in.service";
 import {ProductsService} from "../../services/products.service";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +16,8 @@ export class CartComponent implements OnInit {
   totalAmount?: number;
   user: any;
 
-  constructor(private logedInService: LogedInService, private productService: ProductsService) {
+  constructor(private logedInService: LogedInService, private productService: ProductsService,
+              private cartService: CartService) {
     this.productsId = [];
   }
 
@@ -35,6 +37,9 @@ export class CartComponent implements OnInit {
   }
 
   deleteProduct(product: ProductModel) {
+    console.log('The product to be deleted is: ', product);
+    this.cartService.deleteProduct(product);
+
   }
 
   deleteProducts() {

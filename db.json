@@ -81,8 +81,7 @@
       "password": "1234567",
       "role": "user",
       "productIds": [
-        8,
-        1
+        4
       ],
       "id": 1
     },
@@ -132,8 +131,7 @@
       "password": "1234567",
       "role": "user",
       "productIds": [
-        8,
-        1
+        4
       ],
       "id": 1
     }

@@ -34,6 +34,23 @@ export class CartService {
       this.httpClient.patch(this.url+'/'+this.logedInUser.id,
         {"productIds": this.logedInUser.productIds}).subscribe();
     });
-
   }
+
+  deleteProduct(product: any) {
+    this.logedInService.getLoggedIn().subscribe(user=>{
+      this.logedInUser = user[0];
+
+      this.logedInUser.productIds.splice(this.logedInUser.productIds.find((val: any)=>{
+         val.id != product.id;
+      }), 1);
+
+      this.httpClient.patch(environment.baseUrl+'/loggedInUser/1',
+        {"productIds": this.logedInUser.productIds}).subscribe();
+
+      this.httpClient.patch(this.url+'/'+this.logedInUser.id,
+        {"productIds": this.logedInUser.productIds}).subscribe();
+    });
+  }
+
+
 }
