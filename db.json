@@ -80,7 +80,10 @@
       "email": "user@gmail.com",
       "password": "1234567",
       "role": "user",
-      "productIds": [],
+      "productIds": [
+        8,
+        1
+      ],
       "id": 1
     },
     {
@@ -106,18 +109,33 @@
       "email": "lm1@gmail.com",
       "password": "1234567",
       "role": "user",
-      "productIds": [],
+      "productIds": [
+        1
+      ],
       "id": 4
+    },
+    {
+      "fullName": "A B",
+      "mobileNo": "098978689",
+      "email": "ab@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [],
+      "id": 5
     }
   ],
   "loggedInUser": [
     {
       "fullName": "",
       "mobileNo": "",
-      "email": "admin@gmail.com",
+      "email": "user@gmail.com",
       "password": "1234567",
-      "role": "admin",
-      "id": 2
+      "role": "user",
+      "productIds": [
+        8,
+        1
+      ],
+      "id": 1
     }
   ]
 }

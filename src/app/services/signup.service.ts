@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,10 @@ export class SignupService {
     console.log('Form inside the sgnupService: ', form);
     return this.httpClient.post(this.url, form);
   }
+
+  getUsers():Observable<any> {
+    return this.httpClient.get(this.url);
+  }
+
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductModel} from "../../models/product.model";
 import {ProductsService} from "../../services/products.service";
 import {LogedInService} from "../../services/loged-in.service";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-products',
@@ -13,7 +14,9 @@ export class ProductsComponent implements OnInit {
   userLoggedIn?: any;
   productList: ProductModel[];
 
-  constructor(private productsService: ProductsService, private logedInService: LogedInService) {
+  constructor(private productsService: ProductsService,
+              private cartService: CartService,
+              private logedInService: LogedInService) {
     this.productList = [];
   }
 
@@ -28,8 +31,9 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  create(product: ProductModel) {
-
+  addToCart(product: ProductModel) {
+    console.log('Product is: ', product);
+    this.cartService.create(product);
   }
 
 }

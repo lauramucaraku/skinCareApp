@@ -11,13 +11,16 @@ import {PopupComponent} from "../popup/popup.component";
 export class NavbarComponent implements OnInit {
 
   userLoggedIn?: any;
+  nrOfItems?: number;
 
   constructor(private logedInService: LogedInService, private dialog: MatDialog) {
+    this.nrOfItems = 0;
   }
 
   ngOnInit(): void {
     this.logedInService.getLoggedIn().subscribe(val=>{
       this.userLoggedIn = val;
+      this.nrOfItems = val[0].productIds.length;
     })
   }
 

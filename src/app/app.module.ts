@@ -21,6 +21,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ProductsComponent } from './components/products/products.component';
 import { PopupComponent } from './components/popup/popup.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PopupComponent } from './components/popup/popup.component';
     MainPageComponent,
     AdminComponent,
     ProductsComponent,
-    PopupComponent
+    PopupComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
