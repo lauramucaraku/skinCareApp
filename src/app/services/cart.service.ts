@@ -29,7 +29,7 @@ export class CartService {
       console.log(this.url+'/'+this.logedInUser.id);
 
       this.logedInUser.productIds.push(product.id);
-      this.httpClient.patch(environment.baseUrl+'/loggedInUser/1',
+      this.httpClient.patch(environment.baseUrl+'/loggedInUser/'+user[0].id,
         {"productIds": this.logedInUser.productIds}).subscribe();
 
       this.httpClient.patch(this.url+'/'+this.logedInUser.id,
@@ -45,7 +45,7 @@ export class CartService {
          val.id != product.id;
       }), 1);
 
-      this.httpClient.patch(environment.baseUrl+'/loggedInUser/1',
+      this.httpClient.patch(environment.baseUrl+'/loggedInUser/'+user[0].id,
         {"productIds": this.logedInUser.productIds}).subscribe();
 
       this.httpClient.patch(this.url+'/'+this.logedInUser.id,
@@ -59,7 +59,7 @@ export class CartService {
 
       this.logedInUser.productIds = [];
 
-      this.httpClient.patch(environment.baseUrl+'/loggedInUser/1',
+      this.httpClient.patch(environment.baseUrl+'/loggedInUser/'+user[0].id,
         {"productIds": this.logedInUser.productIds}).subscribe();
 
       this.httpClient.patch(this.url+'/'+this.logedInUser.id,
