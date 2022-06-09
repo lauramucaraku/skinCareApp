@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {ProductModel} from "../models/product.model";
 import {LogedInService} from "./loged-in.service";
-import {SignupService} from "./signup.service";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +13,11 @@ export class CartService {
   users?: any;
   readonly url: string;
 
-  constructor(private httpClient: HttpClient, private logedInService: LogedInService,
-              private signupService: SignupService) {
+  constructor(private httpClient: HttpClient, private logedInService: LogedInService) {
     this.url = environment.baseUrl+'/users';
   }
 
-  create(product: any){
+  create(product: ProductModel){
     console.log('Product id; ', product.id);
     this.logedInService.getLoggedIn().subscribe(user=>{
       console.log('Logedin user inside the service: ', user[0]);
@@ -37,7 +34,7 @@ export class CartService {
     });
   }
 
-  deleteProduct(product: any) {
+  deleteProduct(product: ProductModel) {
     this.logedInService.getLoggedIn().subscribe(user=>{
       this.logedInUser = user[0];
 

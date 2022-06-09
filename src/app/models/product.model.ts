@@ -5,6 +5,7 @@ export interface ProductModel {
   category: string;
   imgUrl: string;
   quantity: number;
+  id: number;
 }
 
 export class ProductModel {
