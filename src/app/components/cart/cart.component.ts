@@ -24,11 +24,9 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.logedInService.getLoggedIn().subscribe(val=>{
       this.user = val;
-     console.log('Val: ', val[0].productIds);
      this.productsId = val[0].productIds;
       for(let product of this.productsId) {
         this.productService.getProduct(product).subscribe(res=>{
-          console.log('Res returned by the getProduct(product) method: ', res)
           this.productList.push(res);
         });
       }

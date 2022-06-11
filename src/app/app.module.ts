@@ -25,6 +25,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserComponent } from './components/user/user.component';
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {AuthInterceptorService} from "./services/auth-interceptor.service";
     PopupComponent,
     CartComponent,
     PageNotFoundComponent,
-    UserComponent
+    UserComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

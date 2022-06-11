@@ -17,18 +17,14 @@
     <div class="navbar navbar-dark bg-danger shadow-sm">
       <div class="navbar-brand align-items-center d-flex">
         <span style="font-size: 40px;" class="material-icons">face_3</span>&ngsp;
-        <strong style="font-size: 20px;" routerLink="/products">SkinCare Shop</strong>
-        <div class="form-group">
-          <input #category type="text" class="form-control" placeholder="Search product by category" id="category">
-        </div>
-        <span class="fas fa-search search-icon"><mat-icon>search</mat-icon></span>
+        <strong style="font-size: 20px;" routerLink="/products" style="margin-left: 10px;">SkinCare Shop</strong>
       </div>
-      <button class="btn btn-danger" routerLink="main" (click)="logout(userLoggedIn[0])">
-        Log out
-      </button>
-      <button class="btn btn-danger" routerLink="cart">
+      <button class="btn btn-danger" routerLink="cart" style="margin-left: 950px;">
         <mat-icon>shopping_cart</mat-icon>
         <div class="badge bg-gray" style="font-size: 15px;">{{nrOfItems}}</div>
+      </button>
+      <button class="btn btn-danger" routerLink="main" (click)="logout(userLoggedIn[0])">
+        <b>Logout</b>
       </button>
     </div>
   </header>
@@ -39,17 +35,13 @@
       <div class="navbar navbar-dark bg-danger shadow-sm">
         <div class="navbar-brand align-items-center d-flex">
           <span style="font-size: 40px;" class="material-icons">face_3</span>&ngsp;
-          <strong style="font-size: 20px;" routerLink="/products">SkinCare Shop</strong>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search product by category">
-          </div>
-          <span class="fas fa-search search-icon"><mat-icon>search</mat-icon></span>
+          <strong style="font-size: 20px;" routerLink="/products" style="margin-left: 10px;">SkinCare Shop</strong>
         </div>
-        <button class="btn btn-danger" routerLink="main" (click)="logout(userLoggedIn[0])">
-          Log out
+        <button class="btn btn-danger" (click)="addNewProduct()" style="margin-left: 950px">
+          <b>Add product</b>
         </button>
-        <button class="btn btn-danger" (click)="addNewProduct()">
-          Add product
+        <button class="btn btn-danger" routerLink="main" (click)="logout(userLoggedIn[0])">
+          <b>Logout</b>
         </button>
       </div>
     </header>

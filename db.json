@@ -80,7 +80,9 @@
       "email": "user@gmail.com",
       "password": "1234567",
       "role": "user",
-      "productIds": [],
+      "productIds": [
+        2
+      ],
       "token": "hyfhsajd765tuyty",
       "id": 1
     },
@@ -133,10 +135,21 @@
       "password": "1234567",
       "role": "user",
       "productIds": [
-        1
+        1,
+        2
       ],
       "token": "ybfh1tworlljer6v6p8cma",
       "id": 6
+    },
+    {
+      "fullName": "Laura Mucaraku",
+      "mobileNo": "0696666666",
+      "email": "lauramucaraku@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [],
+      "token": "m7ne9v0p2ke99auglf84ni",
+      "id": 7
     }
   ],
   "loggedInUser": []

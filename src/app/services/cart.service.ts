@@ -3,6 +3,7 @@ import {ProductModel} from "../models/product.model";
 import {LogedInService} from "./loged-in.service";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
+import {UserModel} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'

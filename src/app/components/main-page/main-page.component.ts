@@ -11,7 +11,6 @@ export class MainPageComponent implements OnInit {
 
   productsList: ProductModel[];
 
-
   constructor(private productsService: ProductsService) {
     this.productsList =[];
   }
