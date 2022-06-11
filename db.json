@@ -139,18 +139,5 @@
       "id": 6
     }
   ],
-  "loggedInUser": [
-    {
-      "fullName": "K L",
-      "mobileNo": "67890987654",
-      "email": "kl@gmail.com",
-      "password": "1234567",
-      "role": "user",
-      "productIds": [
-        1
-      ],
-      "token": "ybfh1tworlljer6v6p8cma",
-      "id": 6
-    }
-  ]
+  "loggedInUser": []
 }
