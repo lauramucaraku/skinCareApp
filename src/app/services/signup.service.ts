@@ -17,12 +17,12 @@ export class SignupService {
 
   signUp(form: FormGroup): Observable<any> {
     console.log('Form inside the sgnupService: ', form);
-    return this.httpClient.post(this.url, form);
+    return this.httpClient.post(this.url, form)
+      .pipe(tap((res: any)=> localStorage.setItem('token', res.token)));
   }
 
   getUsers():Observable<any> {
     return this.httpClient.get(this.url);
   }
-
 
 }

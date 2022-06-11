@@ -26,9 +26,16 @@ export class SignupComponent implements OnInit {
 
   register() {
     console.log('Value of the signup form inside register: ',this.signupForm.value)
+    const rand = () => {
+      return Math.random().toString(36).substr(2);
+    };
+    const token = () => {
+      return rand() + rand();
+    };
     let newUser = this.signupForm.value;
     newUser.role = "user";
     newUser.productIds = [];
+    newUser.token = token();
     console.log('New user: ', newUser);
     this.signupService.signUp(newUser).subscribe(res=>{
       alert('User created!')

@@ -8,7 +8,7 @@ export class UserGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean  {
-    if(localStorage.getItem('token')=='user')
+    if(localStorage.getItem('role')=='user')
       return true;
     else {
       this.router.navigate(['notfound']);

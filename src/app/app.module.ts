@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -24,6 +24,7 @@ import { PopupComponent } from './components/popup/popup.component';
 import { CartComponent } from './components/cart/cart.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserComponent } from './components/user/user.component';
+import {AuthInterceptorService} from "./services/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { UserComponent } from './components/user/user.component';
     MatSelectModule,
     MatFormFieldModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

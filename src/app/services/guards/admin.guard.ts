@@ -10,7 +10,7 @@ export class AdminGuard implements CanActivate {
   }
 
   canActivate(): boolean{
-    if(localStorage.getItem('token')=='admin')
+    if(localStorage.getItem('role')=='admin')
       return true;
     else {
       this.router.navigate(['notfound']);

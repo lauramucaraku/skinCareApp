@@ -19,9 +19,9 @@
         <span style="font-size: 40px;" class="material-icons">face_3</span>&ngsp;
         <strong style="font-size: 20px;" routerLink="/products">SkinCare Shop</strong>
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search product by category">
+          <input #category type="text" class="form-control" placeholder="Search product by category" id="category">
         </div>
-        <span class="fas fa-search search-icon"></span>
+        <span class="fas fa-search search-icon"><mat-icon>search</mat-icon></span>
       </div>
       <button class="btn btn-danger" routerLink="main" (click)="logout(userLoggedIn[0])">
         Log out
@@ -43,7 +43,7 @@
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search product by category">
           </div>
-          <span class="fas fa-search search-icon"></span>
+          <span class="fas fa-search search-icon"><mat-icon>search</mat-icon></span>
         </div>
         <button class="btn btn-danger" routerLink="main" (click)="logout(userLoggedIn[0])">
           Log out

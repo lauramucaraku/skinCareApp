@@ -75,62 +75,82 @@
   ],
   "users": [
     {
-      "fullName": "",
+      "fullName": "User",
       "mobileNo": "",
       "email": "user@gmail.com",
       "password": "1234567",
       "role": "user",
       "productIds": [],
+      "token": "hyfhsajd765tuyty",
       "id": 1
     },
     {
-      "fullName": "",
+      "fullName": "Admin",
       "mobileNo": "",
       "email": "admin@gmail.com",
       "password": "1234567",
       "role": "admin",
+      "token": "ugd6gvs6768q9jna",
       "id": 2
     },
     {
-      "fullName": "Laura Mucaraku",
-      "mobileNo": "0696291432",
-      "email": "lauram@gmail.com",
+      "fullName": "A B",
+      "mobileNo": "0696666666",
+      "email": "ab@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [],
+      "token": "md3a3n2f6knba4vzrdfasd",
+      "id": 3
+    },
+    {
+      "fullName": "X Z",
+      "mobileNo": "9876545678",
+      "email": "xz@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [],
+      "token": "gq3yf966u6ba4gbz4i88kl",
+      "id": 4
+    },
+    {
+      "fullName": "X Y",
+      "mobileNo": "0696666666",
+      "email": "xy@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [
+        2,
+        1
+      ],
+      "token": "8fnwqfyysdwcbb2sqi8dhl",
+      "id": 5
+    },
+    {
+      "fullName": "K L",
+      "mobileNo": "67890987654",
+      "email": "kl@gmail.com",
       "password": "1234567",
       "role": "user",
       "productIds": [
         1
       ],
-      "id": 3
-    },
-    {
-      "fullName": "L M ",
-      "mobileNo": "2222222",
-      "email": "lm1@gmail.com",
-      "password": "1234567",
-      "role": "user",
-      "productIds": [
-        7
-      ],
-      "id": 4
-    },
-    {
-      "fullName": "A B",
-      "mobileNo": "098978689",
-      "email": "ab@gmail.com",
-      "password": "1234567",
-      "role": "user",
-      "productIds": [],
-      "id": 5
-    },
-    {
-      "fullName": "X Y ",
-      "mobileNo": "111111111111",
-      "email": "xy@gmail.com",
-      "password": "1234567",
-      "role": "user",
-      "productIds": [],
+      "token": "ybfh1tworlljer6v6p8cma",
       "id": 6
     }
   ],
-  "loggedInUser": []
+  "loggedInUser": [
+    {
+      "fullName": "K L",
+      "mobileNo": "67890987654",
+      "email": "kl@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [
+        1
+      ],
+      "token": "ybfh1tworlljer6v6p8cma",
+      "id": 6
+    }
+  ]
 }

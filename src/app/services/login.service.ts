@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -28,10 +28,10 @@ export class LoginService {
             this.createUser(user).subscribe();
            console.log('The logged in user inside service: ', user);
            if(user.role=="admin") {
-             localStorage.setItem('token', "admin");
+             localStorage.setItem('role', "admin");
              console.log('Admin successfully logged in!')
            } else if(user.role=="user") {
-             localStorage.setItem('token', "user");
+             localStorage.setItem('role', "user");
              console.log('User successfully logged in!')
            }
          } else {
@@ -47,7 +47,8 @@ export class LoginService {
 
  createUser(user: any): Observable<any> {
     console.log('User inside createUser: ', user);
-    return this.httpClient.post(environment.baseUrl+'/loggedInUser', user);
+    return this.httpClient.post(environment.baseUrl+'/loggedInUser', user)
+      .pipe(tap((res: any)=> localStorage.setItem('token', res.token)));
  }
 
  getLoggedInUser() {

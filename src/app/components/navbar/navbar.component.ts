@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LogedInService} from "../../services/loged-in.service";
 import {MatDialog} from "@angular/material/dialog";
 import {PopupComponent} from "../popup/popup.component";
@@ -32,15 +32,16 @@ export class NavbarComponent implements OnInit {
     if(user.role=='admin') {
       if(confirm('Admin, are you sure you want to logout?')) {
         this.logedInService.logoutUser(user).subscribe();
-        localStorage.removeItem('token');
+        localStorage.removeItem('role');
+        localStorage.removeItem('token')
       }
     } else if (user.role=='user') {
       if(confirm('User, are you sure you want to logout?')) {
         this.logedInService.logoutUser(user).subscribe();
+        localStorage.removeItem('role');
         localStorage.removeItem('token');
       }
     }
-
   }
 
 }
