@@ -109,8 +109,7 @@
       "password": "1234567",
       "role": "user",
       "productIds": [
-        1,
-        3
+        7
       ],
       "id": 4
     },
@@ -122,6 +121,15 @@
       "role": "user",
       "productIds": [],
       "id": 5
+    },
+    {
+      "fullName": "X Y ",
+      "mobileNo": "111111111111",
+      "email": "xy@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [],
+      "id": 6
     }
   ],
   "loggedInUser": []

@@ -27,8 +27,10 @@ export class LoginService {
             this.createUser(user).subscribe();
            console.log('The logged in user inside service: ', user);
            if(user.role=="admin") {
+             localStorage.setItem('token', "admin");
              console.log('Admin successfully logged in!')
            } else if(user.role=="user") {
+             localStorage.setItem('token', "user");
              console.log('User successfully logged in!')
            }
          } else {

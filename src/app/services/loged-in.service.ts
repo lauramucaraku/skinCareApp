@@ -22,6 +22,4 @@ export class LogedInService {
     return this.httpClient.delete(this.url+'/'+user.id);
   }
 
-
-
 }
