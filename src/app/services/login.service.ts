@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class LoginService {
   readonly url: string;
   loggedInUser!: any;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
     this.url = environment.baseUrl+'/users';
   }
 
@@ -34,7 +35,8 @@ export class LoginService {
              console.log('User successfully logged in!')
            }
          } else {
-           alert('User not found');
+           alert('User not found. Please login with your correct credentials, or sign up if you do not have an account!');
+           this.router.navigate(['login']);
          }
        },
        err=>{
