@@ -41,6 +41,7 @@ export class CartComponent implements OnInit {
 
   deleteProducts() {
     this.cartService.deleteProducts();
+    this.productList.length = 0;
   }
 
   calculateTotalAmount() {

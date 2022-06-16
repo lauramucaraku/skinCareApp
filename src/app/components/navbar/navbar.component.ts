@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LogedInService} from "../../services/loged-in.service";
 import {MatDialog} from "@angular/material/dialog";
 import {PopupComponent} from "../popup/popup.component";
@@ -13,9 +13,12 @@ export class NavbarComponent implements OnInit {
 
   userLoggedIn?: any;
   nrOfItems?: number;
+  role: string;
 
-  constructor(private logedInService: LogedInService, private dialog: MatDialog) {
+  constructor(private logedInService: LogedInService, private dialog: MatDialog,
+              private cd: ChangeDetectorRef) {
     this.nrOfItems = 0;
+    this.role = localStorage.getItem('role') as string;
   }
 
   ngOnInit(): void {
@@ -23,6 +26,8 @@ export class NavbarComponent implements OnInit {
       this.userLoggedIn = val;
       this.nrOfItems = val[0].productIds.length;
     })
+    this.role = localStorage.getItem('role') as string;
+    this.cd.detectChanges();
   }
 
   addNewProduct() {
@@ -43,6 +48,7 @@ export class NavbarComponent implements OnInit {
         localStorage.removeItem('token');
       }
     }
+    this.cd.detectChanges();
   }
 
 }

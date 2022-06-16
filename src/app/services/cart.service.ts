@@ -4,6 +4,7 @@ import {LogedInService} from "./loged-in.service";
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {UserModel} from "../models/user.model";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,20 +14,21 @@ export class CartService {
   logedInUser?: any;
   users?: any;
   readonly url: string;
+  currentList: BehaviorSubject<ProductModel[]> = new BehaviorSubject<ProductModel[]>([]);
 
   constructor(private httpClient: HttpClient, private logedInService: LogedInService) {
     this.url = environment.baseUrl+'/users';
   }
 
-  create(product: ProductModel){
-    console.log('Product id; ', product.id);
-    this.logedInService.getLoggedIn().subscribe(user=>{
-      console.log('Logedin user inside the service: ', user[0]);
-      this.logedInUser = user[0];
-      // console.log('Product id is: ', this.logedInUser.productIds.push(product.id));
-      console.log(this.url+'/'+this.logedInUser.id);
+  getCurrentList(products: ProductModel[]) {
+    this.currentList.next(products);
+  }
 
+  create(product: ProductModel){
+    this.logedInService.getLoggedIn().subscribe(user=>{
+      this.logedInUser = user[0];
       this.logedInUser.productIds.push(product.id);
+
       this.httpClient.patch(environment.baseUrl+'/loggedInUser/'+user[0].id,
         {"productIds": this.logedInUser.productIds}).subscribe();
 

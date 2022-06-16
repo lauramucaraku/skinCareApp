@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {Observable, tap} from "rxjs";
+import {Observable, Subject, tap} from "rxjs";
 import {Router} from "@angular/router";
 
 @Injectable({
@@ -11,6 +11,11 @@ export class LoginService {
 
   readonly url: string;
   loggedInUser!: any;
+  private _refreshrequired = new Subject<void>();
+
+  get RefreshRequired() {
+    return this._refreshrequired;
+  }
 
   constructor(private httpClient: HttpClient, private router: Router) {
     this.url = environment.baseUrl+'/users';
@@ -26,13 +31,11 @@ export class LoginService {
          });
          if(user) {
             this.createUser(user).subscribe();
-           console.log('The logged in user inside service: ', user);
-           if(user.role=="admin") {
+            localStorage.setItem('token', user.token);
+            if(user.role=="admin") {
              localStorage.setItem('role', "admin");
-             console.log('Admin successfully logged in!')
            } else if(user.role=="user") {
              localStorage.setItem('role', "user");
-             console.log('User successfully logged in!')
            }
          } else {
            alert('User not found. Please login with your correct credentials, or sign up if you do not have an account!');
@@ -47,8 +50,7 @@ export class LoginService {
 
  createUser(user: any): Observable<any> {
     console.log('User inside createUser: ', user);
-    return this.httpClient.post(environment.baseUrl+'/loggedInUser', user)
-      .pipe(tap((res: any)=> localStorage.setItem('token', res.token)));
+    return this.httpClient.post(environment.baseUrl+'/loggedInUser', user);
  }
 
  getLoggedInUser() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {FormGroup} from "@angular/forms";
+import {ProductModel} from "../../models/product.model";
 
 @Component({
   selector: 'app-popup',
@@ -8,6 +9,8 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./popup.component.scss']
 })
 export class PopupComponent implements OnInit {
+
+  productList?: ProductModel[];
 
   constructor(private productService: ProductsService) { }
 
@@ -20,6 +23,10 @@ export class PopupComponent implements OnInit {
       console.log('Product from the addProduct method: ', product);
       this.productService.addProduct(product).subscribe();
       alert('Product added to list!');
+
+      this.productService.getProductsList().subscribe(val=>{
+        this.productList = val;
+      })
     }
   }
 
