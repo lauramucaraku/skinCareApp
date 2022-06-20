@@ -3,6 +3,7 @@ import {ProductModel} from "../../models/product.model";
 import {LogedInService} from "../../services/loged-in.service";
 import {ProductsService} from "../../services/products.service";
 import {CartService} from "../../services/cart.service";
+import {UserModel} from "../../models/user.model";
 
 @Component({
   selector: 'app-cart',
@@ -12,13 +13,14 @@ import {CartService} from "../../services/cart.service";
 export class CartComponent implements OnInit {
 
   productList: ProductModel[] = [];
+  user: UserModel[];
   productsId: [];
   totalAmount?: number;
-  user: any;
 
   constructor(private logedInService: LogedInService, private productService: ProductsService,
               private cartService: CartService) {
     this.productsId = [];
+    this.user = [];
   }
 
   ngOnInit(): void {

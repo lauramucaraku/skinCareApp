@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
 
   hide = true;
   public loginForm!: FormGroup;
-  userLoggedIn!: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService,
               private logedInService: LogedInService) { }
@@ -29,7 +28,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login(this.loginForm.value);
     this.logedInService.getLoggedIn().subscribe();
-    console.log('The logged in user is: ', this.userLoggedIn);
     this.router.navigate(['products']);
   }
 
