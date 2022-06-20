@@ -1,5 +1,5 @@
-<!--<ng-container *ngIf="userLoggedIn.length==0">-->
-  <ng-container *ngIf="role==undefined">
+<ng-container *ngIf="userLoggedIn.length==0">
+<!--  <ng-container *ngIf="role==undefined">-->
   <header>
     <div class="navbar navbar-dark bg-danger shadow-sm">
       <div class="navbar-brand align-items-center d-flex">
@@ -13,8 +13,8 @@
   </header>
 </ng-container>
 
-<!--<ng-container *ngIf="userLoggedIn.length!=0 && userLoggedIn[0].role==='user'">-->
-<ng-container *ngIf="role=='user'">
+<ng-container *ngIf="userLoggedIn.length!=0 && userLoggedIn[0].role==='user'">
+<!--<ng-container *ngIf="role=='user'">-->
   <header>
     <div class="navbar navbar-dark bg-danger shadow-sm">
       <div class="navbar-brand align-items-center d-flex">
@@ -32,8 +32,8 @@
   </header>
 </ng-container>
 
-<!--<ng-container *ngIf="userLoggedIn.length!=0 && userLoggedIn[0].role==='admin' ">-->
-  <ng-container *ngIf="role=='admin'">
+<ng-container *ngIf="userLoggedIn.length!=0 && userLoggedIn[0].role==='admin' ">
+<!--  <ng-container *ngIf="role=='admin'">-->
   <header>
       <div class="navbar navbar-dark bg-danger shadow-sm">
         <div class="navbar-brand align-items-center d-flex">

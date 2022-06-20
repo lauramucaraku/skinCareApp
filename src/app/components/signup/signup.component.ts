@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {SignupService} from "../../services/signup.service";
 
@@ -17,31 +17,33 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      fullName: [''],
-      mobileNo: [''],
-      email: [''],
-      password: ['']
+      fullName: ['', Validators.required],
+      mobileNo: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$")]],
+      password: ['', Validators.required]
     })
   }
 
   register() {
-    console.log('Value of the signup form inside register: ',this.signupForm.value)
-    const rand = () => {
-      return Math.random().toString(36).substr(2);
-    };
-    const token = () => {
-      return rand() + rand();
-    };
-    let newUser = this.signupForm.value;
-    newUser.role = "user";
-    newUser.productIds = [];
-    newUser.token = token();
-    console.log('New user: ', newUser);
-    this.signupService.signUp(newUser).subscribe(res=>{
-      alert('User created!')
-      this.signupForm.reset();
-      this.router.navigate(['login']);
-    });
+    if(this.signupForm.valid) {
+      const rand = () => {
+        return Math.random().toString(36).substr(2);
+      };
+      const token = () => {
+        return rand() + rand();
+      };
+      let newUser = this.signupForm.value;
+      newUser.role = "user";
+      newUser.productIds = [];
+      newUser.token = token();
+      console.log('New user: ', newUser);
+      this.signupService.signUp(newUser).subscribe(res=>{
+        alert('User created!')
+        this.signupForm.reset();
+        this.router.navigate(['login']);
+      });
+    }
+    else alert('User not created!')
   }
 
 }

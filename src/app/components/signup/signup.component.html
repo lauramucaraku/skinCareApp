@@ -15,6 +15,9 @@
       <mat-label>E-mail</mat-label>
       <input matInput placeholder="xx@gmail.com" required type="email" formControlName="email">
     </mat-form-field>
+    <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty && signupForm.controls['email'].touched)" style="color: red;">
+      *Please provide a correct email!
+    </div>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Password</mat-label>
       <input matInput [type]="hide ? 'password' : 'text'"

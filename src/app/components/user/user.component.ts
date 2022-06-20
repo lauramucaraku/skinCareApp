@@ -27,6 +27,7 @@ export class UserComponent implements OnInit {
     this.logedInService.getLoggedIn().subscribe(val=>{
       this.user = val[0];
       console.log('User inside UserComponent is: ', this.user);
+      // localStorage.setItem('nrItems', JSON.stringify(this.user.productIds.length));
     })
   }
 
