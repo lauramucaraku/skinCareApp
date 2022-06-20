@@ -31,7 +31,6 @@ export class CartComponent implements OnInit {
         });
       }
     });
-
   }
 
   deleteProduct(product: ProductModel) {

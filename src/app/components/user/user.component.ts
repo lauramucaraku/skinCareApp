@@ -3,6 +3,7 @@ import {ProductModel} from "../../models/product.model";
 import {CartService} from "../../services/cart.service";
 import {ProductsService} from "../../services/products.service";
 import {LogedInService} from "../../services/loged-in.service";
+import {UserModel} from "../../models/user.model";
 
 @Component({
   selector: 'app-user',
@@ -12,6 +13,7 @@ import {LogedInService} from "../../services/loged-in.service";
 export class UserComponent implements OnInit {
 
   productList: ProductModel[];
+  user!: UserModel;
 
   constructor(private cartService: CartService, private productsService: ProductsService,
               private logedInService: LogedInService) {
@@ -22,12 +24,19 @@ export class UserComponent implements OnInit {
     this.productsService.getProductsList().subscribe(val=>{
       this.productList = val;
     });
+    this.logedInService.getLoggedIn().subscribe(val=>{
+      this.user = val[0];
+      console.log('User inside UserComponent is: ', this.user);
+    })
   }
 
   addToCart(product: ProductModel) {
     console.log('Product is: ', product);
-    this.cartService.create(product);
-    this.logedInService.getLoggedIn().subscribe();
+    if(confirm(this.user.fullName+ ', are you sure you want to add '+product.title+' to your cart?')) {
+      this.cartService.create(product);
+      this.logedInService.getLoggedIn().subscribe();
+    }
+
   }
 
 }
