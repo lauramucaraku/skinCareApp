@@ -27,11 +27,13 @@ export class CartComponent implements OnInit {
     this.logedInService.getLoggedIn().subscribe(val=>{
       this.user = val;
      this.productsId = val[0].productIds;
+
       for(let product of this.productsId) {
         this.productService.getProduct(product).subscribe(res=>{
           this.productList.push(res);
         });
       }
+
     });
   }
 

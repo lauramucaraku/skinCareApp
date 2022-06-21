@@ -1,53 +1,63 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {Observable, Subject, tap} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
+import {map, tap, switchMap} from "rxjs/operators"
 import {Router} from "@angular/router";
+import {LogedInService} from "./loged-in.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  private readonly url: string;
 
-  readonly url: string;
-  loggedInUser!: any;
-  private _refreshrequired = new Subject<void>();
+  loggedInUser?: any;
+  private loggedInUser$ = new BehaviorSubject(this.loggedInUser);
+  loggedInUserObserver = this.loggedInUser$.asObservable();
 
-  get RefreshRequired() {
-    return this._refreshrequired;
-  }
-
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(private httpClient: HttpClient, private router: Router, private logedInService: LogedInService) {
     this.url = environment.baseUrl+'/users';
+
+    this.logedInService.getLoggedIn().subscribe(users=>{
+      if (users.length) {
+        const [user] = users;
+
+        this.loggedInUser = user;
+        this.loggedInUser$.next(this.loggedInUser);
+      }
+    });
   }
 
  login(userLoggedIn: any) {
-    console.log('User inside the service: ', userLoggedIn)
-   this.httpClient.get<any>(this.url)
-       .subscribe(res=>{
-         console.log('Res: ', res);
-          const user = res.find((val:any)=>{
-           return val.email===userLoggedIn.email && val.password===userLoggedIn.password;
-         });
-         if(user) {
-            this.createUser(user).subscribe();
-            localStorage.setItem('token', user.token);
-            if(user.role=="admin") {
-             localStorage.setItem('role', "admin");
-              this.router.navigate(['admin']);
-           } else if(user.role=="user") {
-             localStorage.setItem('role', "user");
-              this.router.navigate(['user']);
+   this.httpClient
+     .get<any>(this.url)
+     .pipe(
+        map(res => {
+          return res.find((val:any)=> val.email===userLoggedIn.email && val.password===userLoggedIn.password);
+        }),
+        tap(
+          user=>{
+           if(user) {
+             this.loggedInUser = user;
+             this.loggedInUser$.next(this.loggedInUser);
+
+             localStorage.setItem('token', user.token);
+             localStorage.setItem('role', user.role);
+
+             this.router.navigate([user.role]);
+           } else {
+             alert('User not found. Please login with your correct credentials, or sign up if you do not have an account!');
+             this.router.navigate(['login']);
            }
-         } else {
-           alert('User not found. Please login with your correct credentials, or sign up if you do not have an account!');
-           this.router.navigate(['login']);
+         },
+         err=>{
+           alert('Something went wrong!')
          }
-       },
-       err=>{
-         alert('Something went wrong!')
-       });
-    return this.loggedInUser;
+       ),
+       switchMap(user => this.createUser(user))
+   )
+       .subscribe();
  }
 
  createUser(user: any): Observable<any> {

@@ -80,11 +80,7 @@
       "email": "user@gmail.com",
       "password": "1234567",
       "role": "user",
-      "productIds": [
-        3,
-        1,
-        2
-      ],
+      "productIds": [],
       "token": "hyfhsajd765tuyty",
       "id": 1
     },
@@ -166,17 +162,19 @@
       ],
       "token": "w0b334vu98hkgeemc74wf",
       "id": 8
+    },
+    {
+      "fullName": "New User Test",
+      "mobileNo": "0123456789",
+      "email": "newusertest@gmail.com",
+      "password": "1234567",
+      "role": "user",
+      "productIds": [
+        2
+      ],
+      "token": "ci5avmb9079aunv3cvpsso",
+      "id": 9
     }
   ],
-  "loggedInUser": [
-    {
-      "fullName": "Admin",
-      "mobileNo": "",
-      "email": "admin@gmail.com",
-      "password": "1234567",
-      "role": "admin",
-      "token": "ugd6gvs6768q9jna",
-      "id": 2
-    }
-  ]
+  "loggedInUser": []
 }

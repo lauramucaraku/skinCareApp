@@ -3,6 +3,7 @@ import {LogedInService} from "../../services/loged-in.service";
 import {MatDialog} from "@angular/material/dialog";
 import {PopupComponent} from "../popup/popup.component";
 import {UserModel} from "../../models/user.model";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-navbar',
@@ -16,17 +17,24 @@ export class NavbarComponent implements OnInit {
   role: string;
 
   constructor(private logedInService: LogedInService, private dialog: MatDialog,
-              private cd: ChangeDetectorRef) {
+              private cd: ChangeDetectorRef, private loginService: LoginService) {
     this.nrOfItems = 0;
     this.role = localStorage.getItem('role') as string;
   }
 
   ngOnInit(): void {
-    this.logedInService.getLoggedIn().subscribe(val=>{
-      this.userLoggedIn = val;
-      this.nrOfItems = val[0].productIds.length;
-    })
-    this.role = localStorage.getItem('role') as string;
+    this.loginService.loggedInUserObserver
+      .subscribe(user=>{
+        if (user) {
+          this.userLoggedIn = user;
+          this.role = this.userLoggedIn.role;
+          this.nrOfItems = user.productIds?.length || 0;
+        }
+      });
+    // this.logedInService.getLoggedIn().subscribe(val=>{
+    //   this.userLoggedIn = val;
+    //   this.nrOfItems = val[0].productIds.length;
+    // })
     this.cd.detectChanges();
   }
 
@@ -54,7 +62,6 @@ export class NavbarComponent implements OnInit {
         localStorage.removeItem('token');
       }
     }
-    this.cd.detectChanges();
   }
 
 }

@@ -24,48 +24,57 @@ export class CartService {
     this.currentList.next(products);
   }
 
-  create(product: ProductModel){
-    this.logedInService.getLoggedIn().subscribe(user=>{
-      this.logedInUser = user[0];
+  create(product: ProductModel) {
+    const { loggedInUser } = this.loginService;
+
+    if (loggedInUser) {
+      this.logedInUser = loggedInUser;
       this.logedInUser.productIds.push(product.id);
 
-      this.httpClient.patch(environment.baseUrl+'/loggedInUser/'+user[0].id,
-        {"productIds": this.logedInUser.productIds}).subscribe();
+      this.httpClient.patch(environment.baseUrl+'/loggedInUser/'+ this.logedInUser.id,
+        {"productIds": this.logedInUser.productIds}).subscribe(res=>{
+        this.loginService.updateUser(res);
+      });
 
       this.httpClient.patch(this.url+'/'+this.logedInUser.id,
         {"productIds": this.logedInUser.productIds}).subscribe();
-    });
+    }
   }
 
   deleteProduct(product: ProductModel) {
-    this.logedInService.getLoggedIn().subscribe(user=>{
-      this.logedInUser = user[0];
+    const { loggedInUser } = this.loginService;
+
+    if (loggedInUser) {
+      this.logedInUser = loggedInUser;
 
       this.logedInUser.productIds.splice(this.logedInUser.productIds.find((val: any)=>{
-         val.id != product.id;
+        val.id != product.id;
       }), 1);
 
-      this.httpClient.patch(environment.baseUrl+'/loggedInUser/'+user[0].id,
-        {"productIds": this.logedInUser.productIds}).subscribe();
+      this.httpClient.patch(environment.baseUrl+'/loggedInUser/'+this.logedInUser.id,
+        {"productIds": this.logedInUser.productIds}).subscribe(res=>{
+          this.loginService.updateUser(res);
+      });
 
       this.httpClient.patch(this.url+'/'+this.logedInUser.id,
         {"productIds": this.logedInUser.productIds}).subscribe();
-    });
+    }
   }
 
   deleteProducts() {
-    this.logedInService.getLoggedIn().subscribe(user=>{
-      this.logedInUser = user[0];
+    const { loggedInUser } = this.loginService;
+    if(loggedInUser) {
+      this.logedInUser = loggedInUser;
+        this.logedInUser.productIds = [];
 
-      this.logedInUser.productIds = [];
+        this.httpClient.patch(environment.baseUrl+'/loggedInUser/'+this.logedInUser.id,
+          {"productIds": this.logedInUser.productIds}).subscribe(res=>{
+            this.logedInUser.updateUser(res);
+        });
 
-      this.httpClient.patch(environment.baseUrl+'/loggedInUser/'+user[0].id,
-        {"productIds": this.logedInUser.productIds}).subscribe();
-
-      this.httpClient.patch(this.url+'/'+this.logedInUser.id,
-        {"productIds": this.logedInUser.productIds}).subscribe();
-    });
+        this.httpClient.patch(this.url+'/'+this.logedInUser.id,
+          {"productIds": this.logedInUser.productIds}).subscribe();
+    }
   }
-
 
 }
