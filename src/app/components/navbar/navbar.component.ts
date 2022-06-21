@@ -11,9 +11,8 @@ import {LoginService} from "../../services/login.service";
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  userLoggedIn?: any;
-  nrOfItems?: number;
+  userLoggedIn: any;
+  nrOfItems: number;
   role: string;
 
   constructor(private logedInService: LogedInService, private dialog: MatDialog,
@@ -43,23 +42,19 @@ export class NavbarComponent implements OnInit {
   }
 
   logout(user: any) {
-    if(user.role=='admin') {
-      if(confirm(user.fullName + ', are you sure you want to logout?')) {
-        this.logedInService.logoutUser(user).subscribe();
-        this.logedInService.getLoggedIn().subscribe(val=>{
-          this.userLoggedIn = val;
-        })
-        localStorage.removeItem('role');
-        localStorage.removeItem('token')
-      }
-    } else if (user.role=='user') {
-      if(confirm(user.fullName+', are you sure you want to logout?')) {
-        this.logedInService.logoutUser(user).subscribe();
-        this.logedInService.getLoggedIn().subscribe(val=>{
-          this.userLoggedIn = val;
-        })
-        localStorage.removeItem('role');
-        localStorage.removeItem('token');
+    if (user) {
+      if(user.role=='admin') {
+        if(confirm(user.fullName + ', are you sure you want to logout?')) {
+          this.logedInService.logoutUser(user).subscribe(() => this.userLoggedIn = undefined);
+          localStorage.removeItem('role');
+          localStorage.removeItem('token')
+        }
+      } else if (user.role=='user') {
+        if(confirm(user.fullName+', are you sure you want to logout?')) {
+          this.logedInService.logoutUser(user).subscribe(() => this.userLoggedIn = undefined);
+          localStorage.removeItem('role');
+          localStorage.removeItem('token');
+        }
       }
     }
   }

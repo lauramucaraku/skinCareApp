@@ -5,18 +5,18 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {UserModel} from "../models/user.model";
 import {BehaviorSubject} from "rxjs";
+import {LoginService} from "./login.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-
   logedInUser?: any;
   users?: any;
   readonly url: string;
   currentList: BehaviorSubject<ProductModel[]> = new BehaviorSubject<ProductModel[]>([]);
 
-  constructor(private httpClient: HttpClient, private logedInService: LogedInService) {
+  constructor(private httpClient: HttpClient, private loginService: LoginService) {
     this.url = environment.baseUrl+'/users';
   }
 

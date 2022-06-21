@@ -65,8 +65,16 @@ export class LoginService {
     return this.httpClient.post(environment.baseUrl+'/loggedInUser', user);
  }
 
- getLoggedInUser() {
-    return this.loggedInUser;
- }
+ updateUser(user: any) {
+    if (this.loggedInUser) {
+      this.loggedInUser = {
+        ...this.loggedInUser,
+        ...user
+      };
+    } else {
+      this.loggedInUser = { ...user };
+    }
 
+    this.loggedInUser$.next(this.loggedInUser);
+ }
 }
