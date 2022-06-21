@@ -82,7 +82,8 @@
       "role": "user",
       "productIds": [
         3,
-        1
+        1,
+        2
       ],
       "token": "hyfhsajd765tuyty",
       "id": 1
@@ -169,17 +170,13 @@
   ],
   "loggedInUser": [
     {
-      "fullName": "Laura Mucaraku123",
-      "mobileNo": "2222222",
-      "email": "laum@gmail.com",
+      "fullName": "Admin",
+      "mobileNo": "",
+      "email": "admin@gmail.com",
       "password": "1234567",
-      "role": "user",
-      "productIds": [
-        1,
-        3
-      ],
-      "token": "w0b334vu98hkgeemc74wf",
-      "id": 8
+      "role": "admin",
+      "token": "ugd6gvs6768q9jna",
+      "id": 2
     }
   ]
 }

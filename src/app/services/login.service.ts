@@ -34,8 +34,10 @@ export class LoginService {
             localStorage.setItem('token', user.token);
             if(user.role=="admin") {
              localStorage.setItem('role', "admin");
+              this.router.navigate(['admin']);
            } else if(user.role=="user") {
              localStorage.setItem('role', "user");
+              this.router.navigate(['user']);
            }
          } else {
            alert('User not found. Please login with your correct credentials, or sign up if you do not have an account!');
