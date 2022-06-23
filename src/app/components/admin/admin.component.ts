@@ -11,6 +11,7 @@ import {BehaviorSubject} from "rxjs";
 export class AdminComponent implements OnInit {
 
   productList?: ProductModel[];
+  newProduct?: ProductModel;
 
   constructor(private productsService: ProductsService) {
     this.productList = [];
@@ -19,6 +20,10 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.productsService.getProductsList().subscribe(val=>{
       this.productList = val;
+    })
+    this.productsService.receiveProduct().subscribe(product=>{
+      this.newProduct = product;
+      console.log(product);
     })
   }
 

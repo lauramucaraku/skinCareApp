@@ -9,5 +9,14 @@
         <button class="btn btn-danger" (click)="delete(product)">Delete product</button>
       </div>
     </ng-container>
+    <ng-container *ngIf="newProduct">
+      <div class="card col-md-3">
+        <img src="{{newProduct.imgUrl}}" alt="">
+        <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><b>{{newProduct.title}}</b></h4>
+        <p><b>Price: {{newProduct.price | currency}}</b></p>
+        <p>{{newProduct.description}}</p>
+        <button class="btn btn-danger" (click)="delete(newProduct)">Delete product</button>
+      </div>
+    </ng-container>
   </div>
 </div>

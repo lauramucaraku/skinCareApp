@@ -178,5 +178,15 @@
       "id": 9
     }
   ],
-  "loggedInUser": []
+  "loggedInUser": [
+    {
+      "fullName": "Admin",
+      "mobileNo": "",
+      "email": "admin@gmail.com",
+      "password": "1234567",
+      "role": "admin",
+      "token": "ugd6gvs6768q9jna",
+      "id": 2
+    }
+  ]
 }

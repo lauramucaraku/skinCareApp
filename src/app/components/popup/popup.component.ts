@@ -30,6 +30,9 @@ export class PopupComponent implements OnInit {
         this.productList = val;
       })
     }
+
+
+
   }
 
 }
