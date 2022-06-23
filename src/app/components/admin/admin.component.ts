@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductModel} from "../../models/product.model";
 import {ProductsService} from "../../services/products.service";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +10,7 @@ import {ProductsService} from "../../services/products.service";
 })
 export class AdminComponent implements OnInit {
 
-  productList: ProductModel[];
+  productList?: ProductModel[];
 
   constructor(private productsService: ProductsService) {
     this.productList = [];

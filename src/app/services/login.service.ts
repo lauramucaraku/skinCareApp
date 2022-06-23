@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {map, tap, switchMap} from "rxjs/operators"
 import {Router} from "@angular/router";
 import {LogedInService} from "./loged-in.service";
+import {UserModel} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -17,64 +18,61 @@ export class LoginService {
   loggedInUserObserver = this.loggedInUser$.asObservable();
 
   constructor(private httpClient: HttpClient, private router: Router, private logedInService: LogedInService) {
-    this.url = environment.baseUrl+'/users';
+    this.url = environment.baseUrl + '/users';
 
-    this.logedInService.getLoggedIn().subscribe(users=>{
+    this.logedInService.getLoggedIn().subscribe(users => {
       if (users.length) {
         const [user] = users;
-
         this.loggedInUser = user;
         this.loggedInUser$.next(this.loggedInUser);
       }
     });
   }
 
- login(userLoggedIn: any) {
-   this.httpClient
-     .get<any>(this.url)
-     .pipe(
+  login(userLoggedIn: Partial<UserModel>) {
+    this.httpClient
+      .get<any>(this.url)
+      .pipe(
         map(res => {
-          return res.find((val:any)=> val.email===userLoggedIn.email && val.password===userLoggedIn.password);
+          return res.find((val: any) => val.email === userLoggedIn.email && val.password === userLoggedIn.password);
         }),
         tap(
-          user=>{
-           if(user) {
-             this.loggedInUser = user;
-             this.loggedInUser$.next(this.loggedInUser);
+          user => {
+            if (user) {
+              this.loggedInUser = user;
+              this.loggedInUser$.next(this.loggedInUser);
 
-             localStorage.setItem('token', user.token);
-             localStorage.setItem('role', user.role);
+              localStorage.setItem('token', user.token);
+              localStorage.setItem('role', user.role);
+              this.router.navigate([user.role]);
+            } else {
+              alert('User not found. Please login with your correct credentials, or sign up if you do not have an account!');
+              this.router.navigate(['login']);
+            }
+          },
+          err => {
+            alert('Something went wrong!')
+          }
+        ),
+        switchMap(user => this.createUser(user))
+      )
+      .subscribe();
+  }
 
-             this.router.navigate([user.role]);
-           } else {
-             alert('User not found. Please login with your correct credentials, or sign up if you do not have an account!');
-             this.router.navigate(['login']);
-           }
-         },
-         err=>{
-           alert('Something went wrong!')
-         }
-       ),
-       switchMap(user => this.createUser(user))
-   )
-       .subscribe();
- }
+  createUser(user: UserModel): Observable<any> {
+    return this.httpClient.post(environment.baseUrl + '/loggedInUser', user);
+  }
 
- createUser(user: any): Observable<any> {
-    console.log('User inside createUser: ', user);
-    return this.httpClient.post(environment.baseUrl+'/loggedInUser', user);
- }
-
- updateUser(user: any) {
+  updateUser(user: Partial<UserModel>) {
     if (this.loggedInUser) {
       this.loggedInUser = {
         ...this.loggedInUser,
         ...user
       };
     } else {
-      this.loggedInUser = { ...user };
+      this.loggedInUser = {...user};
     }
 
     this.loggedInUser$.next(this.loggedInUser);
- }
+  }
 }

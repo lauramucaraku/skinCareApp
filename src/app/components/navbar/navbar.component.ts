@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   userLoggedIn: any;
   nrOfItems: number;
   role: string;
+  emptyCard?: string;
 
   constructor(private logedInService: LogedInService, private dialog: MatDialog,
               private cd: ChangeDetectorRef, private loginService: LoginService) {
@@ -30,11 +31,7 @@ export class NavbarComponent implements OnInit {
           this.nrOfItems = user.productIds?.length || 0;
         }
       });
-    // this.logedInService.getLoggedIn().subscribe(val=>{
-    //   this.userLoggedIn = val;
-    //   this.nrOfItems = val[0].productIds.length;
-    // })
-    this.cd.detectChanges();
+    this.emptyCard = localStorage.getItem('emptyCard') as string;
   }
 
   addNewProduct() {
