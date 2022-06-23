@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 import {LoginService} from "../../services/login.service";
 import {LogedInService} from "../../services/loged-in.service";
-import {ProductsService} from "../../services/products.service";
 
 @Component({
   selector: 'app-login',

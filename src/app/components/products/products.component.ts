@@ -12,7 +12,7 @@ import {UserModel} from "../../models/user.model";
 })
 export class ProductsComponent implements OnInit {
 
-  userLoggedIn?: any;
+  userLoggedIn: any;
   productList: ProductModel[];
 
   constructor(private productsService: ProductsService,

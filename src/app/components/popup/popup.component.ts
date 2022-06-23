@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ProductsService} from "../../services/products.service";
 import {FormGroup} from "@angular/forms";
 import {ProductModel} from "../../models/product.model";
-import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-popup',
@@ -12,7 +11,6 @@ import {BehaviorSubject} from "rxjs";
 export class PopupComponent implements OnInit {
 
   productList?: ProductModel[];
-  productList$ = new BehaviorSubject(this.productList);
 
   constructor(private productService: ProductsService) { }
 

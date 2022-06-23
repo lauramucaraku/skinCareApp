@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, Observable, Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {ProductModel} from "../models/product.model";
-import {LogedInService} from "./loged-in.service";
-import {SignupService} from "./signup.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +13,7 @@ export class ProductsService {
   products?: ProductModel;
   private products$ = new Subject<any>();
 
-  constructor(private httpClient: HttpClient, private logedInService: LogedInService,
-              private signupService: SignupService) {
+  constructor(private httpClient: HttpClient) {
     this.url = environment.baseUrl+'/products';
   }
 

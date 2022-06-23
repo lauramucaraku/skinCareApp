@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
     this.dialog.open(PopupComponent);
   }
 
-  logout(user: any) {
+  logout(user: UserModel) {
     if (user) {
       if(user.role=='admin') {
         if(confirm(user.fullName + ', are you sure you want to logout?')) {

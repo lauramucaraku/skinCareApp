@@ -47,7 +47,7 @@ export class CartComponent implements OnInit {
       for (let id of this.productsId) {
         this.productService.getProduct(id).subscribe(res => {
           console.log('Res inside the subscriber of DeleteProduct:', res);
-          this.productList.push(res); //this may be not correct
+          this.productList.push(res);
         });
       }
     });

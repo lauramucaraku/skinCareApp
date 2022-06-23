@@ -80,9 +80,7 @@
       "email": "user@gmail.com",
       "password": "1234567",
       "role": "user",
-      "productIds": [
-        3
-      ],
+      "productIds": [],
       "token": "hyfhsajd765tuyty",
       "id": 1
     },
@@ -178,15 +176,5 @@
       "id": 9
     }
   ],
-  "loggedInUser": [
-    {
-      "fullName": "Admin",
-      "mobileNo": "",
-      "email": "admin@gmail.com",
-      "password": "1234567",
-      "role": "admin",
-      "token": "ugd6gvs6768q9jna",
-      "id": 2
-    }
-  ]
+  "loggedInUser": []
 }
